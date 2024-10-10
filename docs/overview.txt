@@ -1,0 +1,233 @@
+obbg:
+  Open Block Building Game (OBBG)
+
+  exercise all interesting
+    features of voxel stuff:
+  + mesh generation/rendering
+  + procedural gen
+  : user create/destroy
+  : save/load to disk
+  : networking
+
+
+Done in today's stream (50):
+   - Continuous foot motion
+   - Fix logistics speed bug
+
+Previous stream (49):
+   - IK
+   - better model
+   - better leaning
+   - AIs as bipeds
+
+Previous stream (48):
+   - fix pathfinding bug
+   - simple critters find paths better
+   - render player w/ facetted lighting
+   - more responsive player controls
+   - basic foot planting for running
+
+
+Previous stream (47):
+   - fix pathfinding bug
+   - O(1) priority queue
+   - simple critters follow paths
+
+Previous stream (46):
+   - physics for inanimates
+   - A* pathfinding
+
+Previous stream (45):
+   - half-height conveyor belts
+   - animated machines
+   - faster faceted lighting
+
+Previous stream (44):
+   - halfheight conveyor belts (unfinished)
+
+Previous stream (43):
+   - smooth camera movement when stepping up
+   - fix leaking render_logi_chunks
+   - new sprite art replaces old everything-is-ore
+   - bad shadows under sprites
+
+Previous stream (42):
+   - ???
+
+Previous stream (41)
+   - inventory select screen
+   - bind keyboard to actionbar
+   - placement ghost blocks
+
+Previous stream (40)
+   - separate iron ore and coal
+   - tweaks & bugs
+
+Previous stream (38)
+   - furnace, iron gear maker, conveyor belt maker
+   - clean up picker logic when inputing to machine
+
+Previous stream (37)
+   - more belt tick refactoring
+   - fix belt animation between ticks
+
+Previous stream (36)
+   - deinterleave straight belts
+   - get rid of passed-around logi_chunks & local coords
+   - refactor belt tick to share all code
+
+Previous stream (35)
+   -  fix idle threads
+   -  add balancer
+   -  start adding splitter
+
+Previous stream (34)
+   -  put MB limit on vertex buffer cache
+
+Previous stream (33)
+   -  write a real memory monitor
+   -  write a real performance monitor
+   -  merge linux pull request
+
+Previous stream (32)
+   -  write tool to parse Miblo's annotations, generate youtube-formatted info
+   -  fix bug that causes crashes occasionally
+
+Previous stream (31)
+   - fix placing blocks updating in renderer, only ever worked in MINIMIZE_MEMORY
+   - ore drills only work if they're on marble 'ore'
+
+Previous stream (30)
+   - start tracking ore deposits for logistics
+
+Previous stream (29)
+  - articulated arm pickers
+
+Previous stream (28)
+  - non-articulated pickers
+
+Previous stream (27)
+  - 90-degree turn conveyors
+
+Previous stream (26.1,26.2,26.3)
+  - pickers feed to machines
+  - machines don't feed from belts
+  - initial implementation of pickers
+  - fix conveyor animation glitch 
+  - simple test machines
+
+Previous stream:
+  - initial ramp simulation
+
+Previous stream:
+  - ramp conveyors texture animation
+
+Previous stream:
+  - clean up rules for moving between belt runs
+  - topologically sort belts so movement is "perfect"
+
+Previous stream:
+  - moving objects on conveyor belts
+
+Previous stream:
+  - animated conveyor belt textures
+
+Previous stream:
+  - re-enable single player mode
+  - primitive place & destroy blocks system
+
+Previous stream:
+  - fix sync of client input buffering
+
+Previous stream:
+  - print network info on client & server
+  - fix bug
+  - initial client-side prediction
+
+Previous stream:
+  - fix jumping up bug
+  - fix tilting up moves backwards
+
+Previous stream:
+  - forgot to document it
+
+Previous stream:
+  - minor clean-up of port# handling
+  - add more client/server design docs
+
+Previous stream:
+  - send multiple client inputs in one packet
+  - let OS pick the client's port
+  - much research into how to do client/server right
+  - pseudo-code design of networking
+
+Previous stream:
+  - primitive networking
+
+Previous stream:
+  - primitive networking
+
+Previous stream:
+  - debugged potential memory leak
+     - really just using too much memory for 32-bit
+  - start hooking up SDL_net  
+
+Previous stream:
+  - refactor physics cache
+  - create an object "system"
+
+Previous stream:
+  - refactor mesh generation so single-player client & server can share the threaded workers
+
+Previous stream:
+  - fixed collision gather bug
+  - 3rd person camera
+
+Previous stream:
+  - collision geometry working, but buggy:
+    - incorrect solid block @ -65, -25, 74
+  - simple walking model with collision probes
+
+Previous stream:
+   (maybe same stream as below)
+     start gathering collision data
+
+Previous stream:
+   -  Tree layout, no grid artifacts
+   -  Tree tops
+
+Previous stream:
+   -  fix lighting bug
+   -  change lighting to not be height-field based
+   -  partial work on new tree layout
+
+Previous stream:
+   -  fog dist from view dist
+   -  improve height-field
+   -  other terrain features
+
+Previous stream:
+   -  threaded procgen&meshing
+
+Previous stream:
+   -  optimize rendering
+      -  frustum culling
+      -  limit # chunks rebuilt per frame
+   -  use more textures
+   -  vertex ambient occlusion
+   -  launch one light source at a time
+   -  optimize mesh building
+   -  optimize terrain generation
+
+Previous stream:
+  - cache procedural genation chunks
+  - build & cache meshes
+  - render them poorly
+
+Done before stream:
+  Pixar's 128 1024x1024
+  Loaded with Rich Geldreich's
+     crunch library (DXT)
+  Main loop/top-level cut-n-paste
+     from caveview (Minecraft)
+
