@@ -572,6 +572,8 @@ GLuint compile_object_shader(char *type)
       assert(0);
       exit(1);
    }
+	stb_free(fragment);
+	stb_free(vertex);
    return prog;
 }
 

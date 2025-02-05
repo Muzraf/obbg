@@ -9,16 +9,17 @@
 
 
  ============================================================================
-   You MUST                                                                  
-                                                                             
-      #define STB_DEFINE                                                     
-                                                                             
+   You MUST
+
+      #define STB_DEFINE
+
    in EXACTLY _one_ C or C++ file that includes this header, BEFORE the
-   include, like this:                                                                
-                                                                             
-      #define STB_DEFINE                                                     
+   include, like this:
+
+
+      #define STB_DEFINE
       #include "stb.h"
-      
+
    All other files should just #include "stb.h" without the #define.
  ============================================================================
 
@@ -5886,7 +5887,7 @@ static char **readdir_raw(char *dir, int return_subdirs, char *mask)
             is_subdir = (y != NULL);
             if (y != NULL) closedir(y);
             #endif
-        
+
             if (is_subdir == return_subdirs) {
                if (!is_subdir || name[0] != '.') {
                   if (!mask || stb_wildmatchi(mask, name)) {

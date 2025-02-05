@@ -243,6 +243,9 @@ struct
 //   { IT_steel_plate,             "steel_plate"        },
 };
 
+void render_free() {
+	free_voxel_render();
+}
 
 void render_init(void)
 {
@@ -358,8 +361,9 @@ void render_init(void)
       s->pos.y = stb_frand() * 100 - 50;
       s->pos.z = stb_frand() * 50 + 64;
       s->size = stb_rand() & 1 ? 0.5 : 0.125;
-   }                
+   }
    #endif
+	stb_readdir_free(files);
 }
 
 
@@ -367,7 +371,7 @@ static void print_string(float x, float y, char *text, float r, float g, float b
 {
    static char buffer[99999];
    int num_quads;
-   
+
    num_quads = stb_easy_font_print(x, y, text, NULL, buffer, sizeof(buffer));
 
    glColor3f(r,g,b);
@@ -735,7 +739,7 @@ float smoothed_z_for_rendering(vec *pos, interpolate_z *iz)
    return stb_lerp(t, pos->z, iz->old_z);
 }
 
-// TODO 
+// TODO
 // + foot placement
 //   x when foot is halfway from previous position to next position, compute placement for next position
 //   + animate foot from old position to halfway cleanly
@@ -1525,6 +1529,17 @@ int loopmode(float dt, int real, int in_client)
    return 0;
 }
 
+static Bool cur_mouse_relative = True;
+void mouse_relative(Bool relative)
+{
+   #if 1
+   if (relative != cur_mouse_relative) {
+      SDL_SetRelativeMouseMode(relative ? SDL_TRUE : SDL_FALSE);
+      cur_mouse_relative = relative;
+   }
+   #endif
+}
+
 extern void process_key_down(int k, int s, SDL_Keymod mod);
 void process_event(SDL_Event *e)
 {
@@ -1550,7 +1565,12 @@ void process_event(SDL_Event *e)
                screen_y = e->window.data2;
                loopmode(0,1,0);
                break;
-         }
+				case SDL_WINDOWEVENT_FOCUS_LOST:
+					break;
+				case SDL_WINDOWEVENT_FOCUS_GAINED:
+					break;
+			}
+
          break;
 
       case SDL_KEYDOWN: {
@@ -1604,17 +1624,6 @@ void enable_synchronous(void)
 {
    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB);
    is_synchronous_debug = 1;
-}
-
-static Bool cur_mouse_relative = True;
-void mouse_relative(Bool relative)
-{
-   #if 0
-   if (relative != cur_mouse_relative) {
-      SDL_SetRelativeMouseMode(relative ? SDL_TRUE : SDL_FALSE);
-      cur_mouse_relative = relative;
-   }
-   #endif
 }
 
 //extern void prepare_threads(void);
@@ -1754,6 +1763,9 @@ int SDL_main(int argc, char **argv)
 
       loopmode(getTimestep(0.0166f/8), 1, 1);
    }
+
+
+	render_free();
 
    if (networking)
       SDLNet_Quit();

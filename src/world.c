@@ -3,8 +3,7 @@
 
 #define MAX_VEL  150.0f      // blocks per second
 #define ACCEL      6.0f
-#define DECEL      3.0f
-
+#define DECEL      3.
 #define STATIC_FRICTION   DECEL
 #define EFFECTIVE_ACCEL   (ACCEL+DECEL)
 

@@ -166,6 +166,10 @@ GLuint main_prog;
 
 static GLuint vox_tex[2];
 
+void free_voxel_render() {
+	stgbl_delete_program(main_prog);
+}
+
 void init_voxel_render(int voxel_tex[2])
 {
    char *vertex = stbvox_get_vertex_shader();
