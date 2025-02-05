@@ -126,7 +126,6 @@ void client_view_physics(objid oid, player_controls *con, float dt)
       o->ang.z += view_z_vel * dt;
       #endif
 
-
       o->ang.x = stb_clamp(o->ang.x, -90, 90);
       o->ang.z = (float) fmod(o->ang.z, 360);
    } else {

@@ -1,5 +1,8 @@
+/* quick fix: for redifination with newer version */
+#ifndef __gl_glext_h_
 #ifndef __glext_h_
 #define __glext_h_ 1
+#define __gl_glext_h_ 1
 
 #ifdef __cplusplus
 extern "C" {
@@ -11121,4 +11124,5 @@ GLAPI void APIENTRY glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN (co
 }
 #endif
 
+#endif
 #endif

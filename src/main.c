@@ -107,10 +107,10 @@ texture_info textures[] =
    { 1,"machinery/conveyor_90_02" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
    { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   { 1,"machinery/conveyor_90_03", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0 },
+   { 1,"machinery/conveyor_90_03" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
    { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   { 1,"machinery/conveyor_270_00", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0 },
+   { 1,"machinery/conveyor_270_00" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
    { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
    { 1,"machinery/conveyor_270_01" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
@@ -1635,7 +1635,15 @@ void *memory_mutex, *prof_mutex;
 int SDL_main(int argc, char **argv)
 {
    int server_port = SERVER_PORT;
-   SDL_Init(SDL_INIT_VIDEO);
+
+	// check when compiling
+	assert(SDL_MAJOR_VERSION == 2);
+
+   if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
+		fprintf(stderr, "SDL_Init() failed: %s\n", SDL_GetError());
+		return 1;
+	}
+
    #ifdef _NDEBUG
    SDL_LogSetAllPriority(SDL_LOG_PRIORITY_INFO);
    #else
@@ -1753,6 +1761,10 @@ int SDL_main(int argc, char **argv)
    #ifdef _DEBUG
    //stop_manager();
    #endif
+
+	SDL_GL_DeleteContext(context);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 
    return 0;
 }

@@ -1,4 +1,4 @@
-   -  upload annotations starting with 22-part2
+-  upload annotations starting with 22-part2
    -  finish uploading videos
    -  install sony vegas
    -  sort obbg_funcs.h
@@ -221,7 +221,7 @@ Ideas:
    -  more work on terrain -- zmc pseudo-wang tile approach
    -  fix depth fighting when far from origin
    -  dynamically set view distance
-   -  improved height-field terrain 
+   -  improved height-field terrain
    -  other terrain features
    -  texture improvements
      -  tweak pixar textures to be more grey so can dynamically recolor
@@ -249,3 +249,4 @@ Ideas:
 Not right now:
 
    -  check "voxel_world_vheight_spiky.avi" for terrain inspiration
+   -  port to sdl3
