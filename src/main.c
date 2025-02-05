@@ -68,59 +68,59 @@ typedef struct
 
 texture_info textures[] =
 {
-   1,"machinery/conveyor_90_00",
-   1.0/4,"ground/Bowling_grass_pxr128",
-   1,"ground/Dirt_and_gravel_pxr128",
-   1,"ground/Fine_gravel_pxr128",
-   1.0/2,"ground/Ivy_pxr128",
-   1,"ground/Lawn_grass_pxr128",
-   1,"ground/Pebbles_in_mortar_pxr128",
-   1,"ground/Peetmoss_pxr128",
+   { 1,"machinery/conveyor_90_00" },
+   { 1.0/4,"ground/Bowling_grass_pxr128" },
+   { 1,"ground/Dirt_and_gravel_pxr128" },
+   { 1,"ground/Fine_gravel_pxr128" },
+   { 1.0/2,"ground/Ivy_pxr128" },
+   { 1,"ground/Lawn_grass_pxr128" },
+   { 1,"ground/Pebbles_in_mortar_pxr128" },
+   { 1,"ground/Peetmoss_pxr128" },
 
-   1,"ground/Red_gravel_pxr128",
-   1,"ground/Street_asphalt_pxr128",
-   1,"floor/Wool_carpet_pxr128",
-   1,"brick/Pink-brown_painted_pxr128",
-   1,"brick/Building_block_pxr128",
-   1,"brick/Standard_red_pxr128",
-   1,"siding/Diagonal_cedar_pxr128",
-   1,"siding/Vertical_redwood_pxr128",
+   { 1,"ground/Red_gravel_pxr128" },
+   { 1,"ground/Street_asphalt_pxr128" },
+   { 1,"floor/Wool_carpet_pxr128" },
+   { 1,"brick/Pink-brown_painted_pxr128" },
+   { 1,"brick/Building_block_pxr128" },
+   { 1,"brick/Standard_red_pxr128" },
+   { 1,"siding/Diagonal_cedar_pxr128" },
+   { 1,"siding/Vertical_redwood_pxr128" },
 
-   1,"machinery/conveyor_90_01",
-   1,"stone/Buffed_marble_pxr128",
-   1,"stone/Black_marble_pxr128",
-   1,"stone/Blue_marble_pxr128",
-   1,"stone/Gray_granite_pxr128",
-   1,"metal/Round_mesh_pxr128",
-   1,"machinery/conveyor",
-   1,"machinery/ore_maker",
+   { 1,"machinery/conveyor_90_01" },
+   { 1,"stone/Buffed_marble_pxr128" },
+   { 1,"stone/Black_marble_pxr128" },
+   { 1,"stone/Blue_marble_pxr128" },
+   { 1,"stone/Gray_granite_pxr128" },
+   { 1,"metal/Round_mesh_pxr128" },
+   { 1,"machinery/conveyor" },
+   { 1,"machinery/ore_maker" },
 
-   1,"machinery/ore_eater",
-   1.0/8,"ground/Beach_sand_pxr128",
-   1,"stone/Gray_marble_pxr128",
-   0,0,
-   0,0,
-   0,0,
-   0,0,
-   0,0,
+   { 1,"machinery/ore_eater" },
+   { 1.0/8,"ground/Beach_sand_pxr128" },
+   { 1,"stone/Gray_marble_pxr128" },
+   { 0,0 },
+   { 0,0 },
+   { 0,0 },
+   { 0,0 },
+   { 0,0 },
 
-   1,"machinery/conveyor_90_02", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0,
-   0,0,   0,0,   0,0, 0,0,   0,0,   0,0,   0,0,   0,0,
+   { 1,"machinery/conveyor_90_02" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
+   { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   1,"machinery/conveyor_90_03", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0,
-   0,0,   0,0,   0,0, 0,0,   0,0,   0,0,   0,0,   0,0,
+   { 1,"machinery/conveyor_90_03", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0 },
+   { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   1,"machinery/conveyor_270_00", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0,
-   0,0,   0,0,   0,0, 0,0,   0,0,   0,0,   0,0,   0,0,
+   { 1,"machinery/conveyor_270_00", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0 },
+   { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   1,"machinery/conveyor_270_01", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0,
-   0,0,   0,0,   0,0, 0,0,   0,0,   0,0,   0,0,   0,0,
+   { 1,"machinery/conveyor_270_01" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
+   { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   1,"machinery/conveyor_270_02", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0,
-   0,0,   0,0,   0,0, 0,0,   0,0,   0,0,   0,0,   0,0,
+   { 1,"machinery/conveyor_270_02" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
+   { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 
-   1,"machinery/conveyor_270_03", 0,0,  0,0,  0,0, 0,0,  0,0,   0,0,   0,0,
-   0,0,   0,0,   0,0, 0,0,   0,0,   0,0,   0,0,   0,0,
+   { 1,"machinery/conveyor_270_03" }, { 0,0 },  { 0,0 },  { 0,0 }, { 0,0 },  { 0,0 },   { 0,0 },   { 0,0 },
+   { 0,0 },   { 0,0 },   { 0,0 }, { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },   { 0,0 },
 };
 
 void game_init(void)
@@ -277,7 +277,7 @@ void render_init(void)
             uint8 *pixels = stbi_load(stb_sprintf("data/%s.jpg", textures[i].filename), &w, &h, 0, 4);
             if (!pixels)
                pixels = stbi_load(stb_sprintf("data/%s.png", textures[i].filename), &w, &h, 0, 4);
-            
+
             if (pixels) {
                load_bitmap_to_texture_array(i, pixels, w, h, 1, 0);
                free(pixels);
@@ -307,7 +307,7 @@ void render_init(void)
          exit(0);
       }
       dumb_prog = stbgl_link_program(0, fragment, NULL, -1, error, sizeof(error));
-      
+
    }
 
    #if 0
@@ -402,7 +402,7 @@ float light_pos[3];
 float light_vel[3];
 
 float pending_view_x;
-float pending_view_z;
+float pending_view_z = 180+75;
 
 player_controls client_player_input;
 
@@ -1248,7 +1248,7 @@ void render_objects(void)
             ang.x = forward * 1.2;
          else
             ang.x = forward * 0.7f;
-            
+
          render_biped(pos, tp, ang, obj[i].position.z, i);
       }
    }
@@ -1575,7 +1575,7 @@ static float getTimestep(float minimum_time)
    float elapsedTime;
    double thisTime;
    static double lastTime = -1;
-   
+
    if (lastTime == -1)
       lastTime = SDL_GetTicks() / 1000.0 - minimum_time;
 
@@ -1583,7 +1583,7 @@ static float getTimestep(float minimum_time)
       thisTime = SDL_GetTicks() / 1000.0;
       elapsedTime = (float) (thisTime - lastTime);
       if (elapsedTime >= minimum_time) {
-         lastTime = thisTime;         
+         lastTime = thisTime;
          return elapsedTime;
       }
       // @TODO: compute correct delay
@@ -1606,7 +1606,7 @@ void enable_synchronous(void)
    is_synchronous_debug = 1;
 }
 
-static cur_mouse_relative = True;
+static Bool cur_mouse_relative = True;
 void mouse_relative(Bool relative)
 {
    #if 0

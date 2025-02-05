@@ -308,7 +308,7 @@ typedef struct
    float torso_base_height; // offset from feet to bottom of torso position
 } type_properties;
 
-type_properties type_prop[];
+extern type_properties type_prop[];
 extern Bool third_person;
 typedef int32 objid;
 

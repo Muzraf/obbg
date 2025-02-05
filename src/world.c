@@ -99,8 +99,8 @@ void worldspace_to_objspace_flat(float world[3], objid oid, float cam_x, float c
    world[2] = 0;
 }
 
-float pending_view_x;
-float pending_view_z = 180+75;
+extern float pending_view_x;
+extern float pending_view_z;
 
 static float view_x_vel = 0;
 static float view_z_vel = 0;
