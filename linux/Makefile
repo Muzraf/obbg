@@ -4,7 +4,7 @@ hdrs := $(wildcard ../src/*.h)
 
 FLAGS    := -D_GNU_SOURCE -g -I../stb/ $(shell sdl2-config --cflags)
 CFLAGS   = $(FLAGS) -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -std=c99
-CFLAGS  += -fsanitize=leak,address
+CFLAGS  += -fsanitize=leak,address -Wall -Werror
 CXXFLAGS = $(FLAGS) -std=c++11 -fpermissive
 LDFLAGS  := -lGL -lGLU -lSDL2 -lm -lSDL_net
 

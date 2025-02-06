@@ -7,7 +7,6 @@
 #include "stb_vec.h"
 
 #include <stdlib.h>
-
 #include <assert.h>
 
 typedef int Bool;
@@ -21,6 +20,21 @@ typedef int Bool;
    typedef long long int64;
    typedef unsigned long long uint64;
 #endif
+
+#if (defined(__GNUC__) && __GNUC__ > 2) || (defined(__clang__) && __clang_major__ >= 12)
+#define obbg__attr_nonnull(l)   __attribute__((nonnull l))
+#define obbg__unused__          __attribute__((unused))
+#define likely(x)             __builtin_expect(!!(x), 1)
+#define unlikely(x)           __builtin_expect(!!(x), 0)
+#define __maybe_unused        __attribute__((unused))
+#else
+#define obbg__attr_nonnull(l)
+#define obbg__unused__
+#define likely(x)       (x)
+#define unlikely(x)     (x)
+#define __maybe_unused
+#endif
+
 
 #define MAX_MESH_WORKERS 3
 

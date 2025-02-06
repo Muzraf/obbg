@@ -3736,8 +3736,8 @@ int stb_ischar(char c, char *set)
    PREFIX int STB__(N, remove)(TYPE *a, KEY k, VALUE *v);
 
 #define STB_nocopy(x)        (x)
-#define STB_nodelete(x)      0
-#define STB_nofields         
+#define STB_nodelete(x)      (void)0
+#define STB_nofields
 #define STB_nonullvalue(x)
 #define STB_nullvalue(x)     x
 #define STB_safecompare(x)   x

@@ -255,7 +255,7 @@ static int offset_for_side(belt_run *a, int side)
 
 static void compute_mobile_slots(belt_run *br)
 {
-   int side, start, len, end, j;
+   int side, start, len, obbg__unused__ end, j;
    if (br->len == 0) return;
    for (side=0; side < 2; ++side) {
       if (br->turn) {
@@ -789,7 +789,7 @@ static int get_machine_id(int x, int y, int z)
 // @TODO what happens if we point a conveyor at the side of a turn
 // @TODO make all functions returning belt_id return TARGET_none
 
-static int get_belt_id(int x, int y, int z, int dir)
+obbg__unused__ static int get_belt_id(int x, int y, int z, int dir)
 {
    int j;
    logi_chunk *d = get_chunk(x,y,z);
@@ -834,7 +834,7 @@ static void logistics_update_chunk(int x, int y, int z)
             int outdir = (b->dir + turn)&3;
             int ex = b->x_off + b->len * face_dir[outdir][0];
             int ey = b->y_off + b->len * face_dir[outdir][1];
-            int ez = b->z_off + b->end_dz, is_neighbor=0;
+            int ez = b->z_off + b->end_dz, obbg__unused__ is_neighbor=0;
             if (ex < 0 || ey < 0 || ex >= LOGI_CHUNK_SIZE_X || ey >= LOGI_CHUNK_SIZE_Y || ez < 0 || ez >= LOGI_CHUNK_SIZE_Z) {
                d = get_chunk(base_x + ex, base_y + ey, base_z + ez);
                ex = LOGI_CHUNK_MASK_X(ex);
@@ -931,7 +931,7 @@ static void logistics_update_chunk(int x, int y, int z)
          machine_info *m = &c->machine[i];
          if (m->type == BT_ore_drill) {
             int ore_z = base_z + m->pos.unpacked.z - 1;
-            logi_chunk *d = logistics_get_chunk_alloc(base_x + m->pos.unpacked.x, base_y + m->pos.unpacked.y, ore_z);
+            obbg__unused__ logi_chunk *d = logistics_get_chunk_alloc(base_x + m->pos.unpacked.x, base_y + m->pos.unpacked.y, ore_z);
             #if 0
             if (d->type[ore_z & (LOGI_CHUNK_SIZE_Z-1)][m->pos.unpacked.y][m->pos.unpacked.x] == BT_stone)
                m->input_flags = 1;
@@ -1105,7 +1105,7 @@ static vec3i get_target(int x, int y, int z, belt_run *br)
    return result;
 }
 
-static belt_run *get_belt_run_in_direction(int x, int y, int z, int dir, int id, int *off)
+obbg__unused__ static belt_run *get_belt_run_in_direction(int x, int y, int z, int dir, int id, int *off)
 {
    logi_chunk *c;
    x = x + face_dir[dir][0];
@@ -1117,7 +1117,7 @@ static belt_run *get_belt_run_in_direction(int x, int y, int z, int dir, int id,
    return &c->belts[id];
 }
 
-static void check(belt_run *br)
+obbg__unused__ static void check(belt_run *br)
 {
    int i;
    for (i=0; i < obarr_len(br->items); ++i)
@@ -1280,7 +1280,7 @@ static void logistics_belt_compute_mobility(int x, int y, int z, belt_run *br)
 {
    int side;
    for (side = 0; side < 2; ++side) {
-      int start, len, end, allow_new_frontmost_to_move=0, j;
+      int start, len, obbg__unused__ end, allow_new_frontmost_to_move=0, j;
       int target_id;
 
       if (br->type == BR_splitter) {
@@ -1405,12 +1405,12 @@ typedef struct
 
 static void vget_target_chunk(vtarget_chunk *tc, int x, int y, int z, belt_run *br)
 {
-   int bx = (x & ~(LOGI_CHUNK_SIZE_X-1));
-   int by = (y & ~(LOGI_CHUNK_SIZE_Y-1));
-   int bz = (z & ~(LOGI_CHUNK_SIZE_Z-1));
+   obbg__unused__ int bx = (x & ~(LOGI_CHUNK_SIZE_X-1));
+   obbg__unused__ int by = (y & ~(LOGI_CHUNK_SIZE_Y-1));
+   obbg__unused__ int bz = (z & ~(LOGI_CHUNK_SIZE_Z-1));
    vec3i target = get_target(x,y,z, br);
-   int ex = target.x;
-   int ey = target.y;
+   obbg__unused__ int ex = target.x;
+   obbg__unused__ int ey = target.y;
    int ez = target.z;
    logistics_get_chunk(target.x,target.y,target.z, &tc->s);
    tc->cid = ez >> LOGI_CHUNK_SIZE_Z_LOG2;
@@ -1491,7 +1491,7 @@ static int offset_for_slot(belt_run *b, int slot)
 
 static void remove_item_from_belt(belt_run *b, int slot)
 {
-   int side,pos, offset;
+   int side obbg__unused__ , pos obbg__unused__ , offset;
    assert(slot < obarr_len(b->items));
    b->items[slot].type = 0;
    offset = offset_for_slot(b, slot);
@@ -1499,7 +1499,7 @@ static void remove_item_from_belt(belt_run *b, int slot)
    pos = slot - offset;
 }
 
-static Bool try_remove_item_from_belt(belt_run *b, int slot, int type1, int type2)
+obbg__unused__ static Bool try_remove_item_from_belt(belt_run *b, int slot, int type1, int type2)
 {
    assert(slot < obarr_len(b->items));
    if (b->items[slot].type == type1 || b->items[slot].type == type2) {
@@ -1523,7 +1523,7 @@ static void add_item_to_belt_pos(belt_run *b, int slot, int side, int pos, int t
    b->items[slot].type = type;
 }
 
-static Bool try_add_item_to_belt(belt_run *b, int slot, int type)
+obbg__unused__ static Bool try_add_item_to_belt(belt_run *b, int slot, int type)
 {
    assert(slot < obarr_len(b->items));
    if (b->items[slot].type == 0) {
@@ -1568,7 +1568,7 @@ static int input_count_table[][4] =
 
 };
 
-static int output_types[][4] =
+obbg__unused__ static int output_types[][4] =
 {
    { 0 },
    { 0 },
@@ -1746,7 +1746,7 @@ static void logistics_longtick_chunk_machines(logi_chunk *c, int base_x, int bas
 
    for (m=0; m < obarr_len(c->pickers); ++m) {
       picker_info *pi = &c->pickers[m];
-      Bool went_to_zero = False;
+      obbg__unused__ Bool went_to_zero = False;
       if (pi->state == 1)
          pi->state = 0;
       if (pi->state == 3)
@@ -2121,9 +2121,10 @@ static void vacuum_item(belt_run *br, int slot)
       br->items[slot].type = 0;
    }
 }
-
+#ifdef _WIN32
 // @TODO we don't really want this
 #pragma warning(disable:4244)
+#endif
 
 // @TODO: this is only safe if the main thread is stopped
 static void non_logistics_interactions(void)

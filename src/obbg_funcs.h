@@ -182,11 +182,11 @@ typedef struct
 #define obarrhead2(a)        /*lint --e(826)*/ (((ob__arr *) (a)) - 1)
 
 #ifdef STB_DEBUG
-#define obarr_check(a)       assert(!a || obarrhead(a)->signature == obarr_signature)
-#define obarr_check2(a)      assert(!a || obarrhead2(a)->signature == obarr_signature)
+#define obarr_check(a)       (void)assert(!a || obarrhead(a)->signature == obarr_signature)
+#define obarr_check2(a)      (void)assert(!a || obarrhead2(a)->signature == obarr_signature)
 #else
-#define obarr_check(a)       0
-#define obarr_check2(a)      0
+#define obarr_check(a)       (void)0
+#define obarr_check2(a)      (void)0
 #endif
 
 // ARRAY LENGTH
@@ -196,7 +196,7 @@ typedef struct
 #define obarr_len2(a)        ((ob__arr *) (a) ? obarrhead2(a)->len : 0)
 #define obarr_lastn(a)       (obarr_len(a)-1)
 
-// check whether a given index is valid -- tests 0 <= i < obarr_len(a) 
+// check whether a given index is valid -- tests 0 <= i < obarr_len(a)
 #define obarr_valid(a,i)     (a ? (int) (i) < obarrhead(a)->len : 0)
 
 // change the array length so is is exactly N entries long, creating

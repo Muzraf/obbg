@@ -17,8 +17,9 @@ typedef float stb_vec_f4[4];
 extern "C" {
 #endif
 
-extern vec vec_zero(void);
-extern vec vec3(float x, float y, float z);
+#define vec_zero() (vec){.x=0, .y=0, .z=0}
+#define vec(a,b,c) (vec){.x=(x),.y=(y),.z=(z)}
+
 extern vec vec3v(float *x);
 extern void vec_add(vec *d, vec *v0, vec *v1);
 extern void vec_addeq(vec *d, vec *v0);
@@ -133,17 +134,17 @@ void vec_print(vec *v) {
 	printf("%f %f %f\n", v);
 }
 
-vec vec_zero(void)
-{
-   vec v = { 0,0,0 };
-   return v;
-}
+/* vec vec_zero(void) */
+/* { */
+/*    vec v = { 0,0,0 }; */
+/*    return v; */
+/* } */
 
-vec vec3(float x, float y, float z)
-{
-   vec v = { x,y,z };
-   return v;
-}
+/* vec vec3(float x, float y, float z) */
+/* { */
+/*    vec v = { x,y,z }; */
+/*    return v; */
+/* } */
 
 vec vec3f(float *p)
 {
