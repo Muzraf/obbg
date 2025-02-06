@@ -1010,9 +1010,21 @@ void update_biped(vec pos, type_properties *tp, vec ang, float bottom_z, objid o
             ba->right_foot.y = stb_linear_remap(0, -last_time_step, time_to_foot_impact, old.y, foot.y);
             ba->right_foot.z = stb_linear_remap(0, -last_time_step, time_to_foot_impact, old.z, foot.z);
             if (time_to_foot_impact == 0) {
+#if 1
+					if ((ba->right_foot.x != foot.x) ||
+						 (ba->right_foot.y != foot.y) ||
+						 (ba->right_foot.z != foot.z)) {
+
+						vec_print(&ba->right_foot);
+						vec_print(&foot);
+						//assert(0);
+
+					}
+#else
                assert(ba->right_foot.x == foot.x);
                assert(ba->right_foot.y == foot.y);
                assert(ba->right_foot.z == foot.z);
+#endif
             }
             foot = ba->right_foot;
          }
@@ -1082,9 +1094,22 @@ void update_biped(vec pos, type_properties *tp, vec ang, float bottom_z, objid o
             ba->left_foot.y = stb_linear_remap(0, -last_time_step, time_to_foot_impact, old.y, foot.y);
             ba->left_foot.z = stb_linear_remap(0, -last_time_step, time_to_foot_impact, old.z, foot.z);
             if (time_to_foot_impact == 0) {
+#if 1
+					if ((ba->left_foot.x != foot.x) ||
+						 (ba->left_foot.y != foot.y) ||
+						 (ba->left_foot.z != foot.z)) {
+
+						vec_print(&ba->left_foot);
+						vec_print(&foot);
+						//assert(0);
+
+					}
+#else
+
                assert(ba->left_foot.x == foot.x);
                assert(ba->left_foot.y == foot.y);
                assert(ba->left_foot.z == foot.z);
+#endif
             }
             foot = ba->left_foot;
          }

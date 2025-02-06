@@ -122,11 +122,17 @@ extern void float33_from_quat(float mat[3][3], quat *q);
 extern void float44_from_quat(float mat[4][4], quat *q);
 extern void float44_from_quat_vec(float mat[4][4], quat *rot, vec *trans);
 
+extern void vec_print(vec *v);
+
 #ifdef __cplusplus
 }
 #endif
 
 #ifdef STB_DEFINE
+void vec_print(vec *v) {
+	printf("%f %f %f\n", v);
+}
+
 vec vec_zero(void)
 {
    vec v = { 0,0,0 };
@@ -729,11 +735,11 @@ void float33_from_quat(float mat[3][3], quat *q)
    YY2 = Y2   * q->y;
    YZ2 = Y2   * q->z;
    YW2 = Y2   * q->w;
-   
+
    Z2  = 2.0f * q->z;
    ZZ2 = Z2   * q->z;
    ZW2 = Z2   * q->w;
-   
+
    mat[0][0] = 1.0f - YY2 - ZZ2;
    mat[0][1] = XY2  - ZW2;
    mat[0][2] = XZ2  + YW2;
