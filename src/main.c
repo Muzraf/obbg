@@ -1245,6 +1245,7 @@ void render_objects(void)
          ang.x = 0;
          face.x = sin(ang.z * M_PI / 180);
          face.y = -cos(ang.z * M_PI / 180);
+			face.z = 0;
          move = obj[i].velocity;
          move.z = 0;
          forward = vec_dot(&move, &face);
