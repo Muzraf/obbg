@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 #define vec_zero() (vec){.x=0, .y=0, .z=0}
-#define vec(a,b,c) (vec){.x=(x),.y=(y),.z=(z)}
+#define vec(a,b,c) (vec){.x=(a),.y=(b),.z=(c)}
 
 extern vec vec3v(float *x);
 extern void vec_add(vec *d, vec *v0, vec *v1);
@@ -131,7 +131,7 @@ extern void vec_print(vec *v);
 
 #ifdef STB_DEFINE
 void vec_print(vec *v) {
-	printf("%f %f %f\n", v);
+	printf("%f %f %f\n", v->x, v-y, v->z);
 }
 
 /* vec vec_zero(void) */

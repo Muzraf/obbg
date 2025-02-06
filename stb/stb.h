@@ -2977,8 +2977,8 @@ typedef struct
 #define stb_arr_check(a)       assert(!a || stb_arrhead(a)->signature == stb_arr_signature)
 #define stb_arr_check2(a)      assert(!a || stb_arrhead2(a)->signature == stb_arr_signature)
 #else
-#define stb_arr_check(a)       0
-#define stb_arr_check2(a)      0
+#define stb_arr_check(a)       (void)0
+#define stb_arr_check2(a)      (void)0
 #endif
 
 // ARRAY LENGTH
@@ -2988,7 +2988,7 @@ typedef struct
 #define stb_arr_len2(a)        ((stb__arr *) (a) ? stb_arrhead2(a)->len : 0)
 #define stb_arr_lastn(a)       (stb_arr_len(a)-1)
 
-// check whether a given index is valid -- tests 0 <= i < stb_arr_len(a) 
+// check whether a given index is valid -- tests 0 <= i < stb_arr_len(a)
 #define stb_arr_valid(a,i)     (a ? (int) (i) < stb_arrhead(a)->len : 0)
 
 // change the array length so is is exactly N entries long, creating
@@ -6035,7 +6035,7 @@ stb_dirtree2 *stb_dirtree2_from_files_relative(char *src, char **filelist, int c
       if (!stb_strchr2(descendents[i]+elen, '/', '\\')) {
          stb_arr_push(files, descendents[i]);
          descendents[i] = descendents[stb_arr_len(descendents)-1];
-         stb_arr_pop(descendents);
+         (void)stb_arr_pop(descendents);
       } else
          ++i;
    }
@@ -9085,7 +9085,7 @@ static char *stb__reg_parse_alt(stb_matcher *matcher, int start, char *regex, st
 {
    stb_uint16 last_end = start;
    stb_uint16 main_end;
-
+   (void)main_end;
    int head, tail;
 
    head = stb__add_node(matcher);

@@ -2,7 +2,9 @@
 #include "stb_gl.h"
 #include <math.h>
 
+#ifdef _WIN32
 #pragma warning(disable:4244)
+#endif
 
 static int face_orig[4][2] = {
    { 0,0 },
@@ -15,7 +17,7 @@ static int face_orig[4][2] = {
 static void draw_one_picker(int x, int y, int z, int rot, float pos, float drop_on_pickup)
 {
    float bone_state[4];
-   vec base = { 0.35f,0.35f,0.35f };
+   vec base = vec( 0.35f,0.35f,0.35f );
    float len;
 
    bone_state[1] = stb_lerp(pos, 0.5, -0.75) - base.x;
@@ -79,7 +81,7 @@ void logistics_render_from_copy(render_logi_chunk **arr, float offset)
                   break;
             }
          }
-          
+
          for (a=0; a < c->num_belt_machines; ++a) {
             render_belt_machine_info *m = &c->belt_machine[a];
             switch (m->type) {
@@ -97,14 +99,14 @@ void logistics_render_from_copy(render_logi_chunk **arr, float offset)
          }
 
          for (a=0; a < c->num_pickers; ++a) {
-            int b = 0;
+            obbg__unused__ int b = 0;
             render_picker_info *pi = &c->pickers[a];
             float pos=0;
             float bone_state[4]= {0,0,0,0};
             int state = pi->state;
             int rot = pi->rot;
             float drop_on_pickup;
-            
+
 
             if (pi->input_is_belt) {
                state = state^2;
@@ -128,7 +130,7 @@ void logistics_render_from_copy(render_logi_chunk **arr, float offset)
 
             #if 1
             {
-               vec base = { 0.35f,0.35f,0.35f };
+               vec base = vec( 0.35f,0.35f,0.35f );
                float len;
 
                bone_state[1] = stb_lerp(pos, 0.5, -0.75) - base.x;
