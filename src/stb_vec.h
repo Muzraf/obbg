@@ -2,7 +2,7 @@
 #ifndef INCLUDE_STB_VEC_H
 #define INCLUDE_STB_VEC_H
 
-typedef struct { float x,y,z  ; }  vec;
+typedef union { struct { float x,y,z  ; }; float v[3]; } vec;
 typedef struct { float x,y,z,w; }  vec4;
 typedef struct { short s,t    ; }  vec2s;
 typedef struct { float x,y    ; }  vec2;
