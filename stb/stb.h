@@ -4096,7 +4096,7 @@ void stb_idict_remove_all(stb_idict *e)
 // An stb_ptrmap data structure is an O(1) hash table storing an arbitrary
 // block of data for a given pair of pointers.
 //
-// If create=0, returns 
+// If create=0, returns
 
 typedef struct stb__st_stb_spmatrix stb_spmatrix;
 
@@ -6511,7 +6511,7 @@ STB_EXTERN stb_cfg * stb_cfg_open(char *config, char *mode)
 {
    size_t len;
    stb_cfg *z;
-   char file[512];
+   char file[1024];
    if (mode[0] != 'r' && mode[0] != 'w') return NULL;
 
    if (!stb__cfg_dir[0]) {
@@ -9443,7 +9443,7 @@ stb_int16 stb__get_dfa_node(stb_matcher *m, stb_uint16 *list)
    memcpy(newstate, state, m->num_words_per_dfa*4);
 
    // set all transitions to 'unknown'
-   stb_arr_add(m->dfa);
+   (void)stb_arr_add(m->dfa);
    memset(m->dfa[i].transition, -1, sizeof(m->dfa[i].transition));
 
    if (m->does_lex) {
@@ -11062,41 +11062,41 @@ stb_arith_symstate *stb_arith_state_create(int num_sym)
    return s;
 }
 
-static void stb_arith_state_rescale(stb_arith_symstate *s)
-{
-   if (s->pow2 < POW2_LIMIT) {
-      int pcf, cf, cf_next, next, i;
-      ++s->pow2;
-      if (s->pow2 < POW2_LIMIT)
-         next = 0;
-      else
-         next = 1;
-      cf = cf_next = 0;
-      pcf = 0;
-      for (i=0; i < s->num_sym; ++i) {
-         int sample = s->data[i].cumfreq - pcf + s->data[i].samples;
-         s->data[i].cumfreq = cf;
-         cf += sample;
-         s->data[i].samples = next;
-         cf_next += next;
-      }
-      assert(cf == (1 << s->pow2));
-      s->countdown = (2 << s->pow2) - cf - cf_next;
-   } else {
-      int pcf, cf, cf_next, i;
-      cf = cf_next = 0;
-      pcf = 0;
-      for (i=0; i < s->num_sym; ++i) {
-         int sample = (s->data[i].cumfreq - pcf + s->data[i].samples) >> 1;
-         s->data[i].cumfreq = cf;
-         cf += sample;
-         s->data[i].samples = 1;
-         cf_next += 1;
-      }
-      assert(cf == (1 << s->pow2)); // this isn't necessarily true, due to rounding down!
-      s->countdown = (2 << s->pow2) - cf - cf_next;
-   }
-}
+/* static void stb_arith_state_rescale(stb_arith_symstate *s) */
+/* { */
+/*    if (s->pow2 < POW2_LIMIT) { */
+/*       int pcf, cf, cf_next, next, i; */
+/*       ++s->pow2; */
+/*       if (s->pow2 < POW2_LIMIT) */
+/*          next = 0; */
+/*       else */
+/*          next = 1; */
+/*       cf = cf_next = 0; */
+/*       pcf = 0; */
+/*       for (i=0; i < s->num_sym; ++i) { */
+/*          int sample = s->data[i].cumfreq - pcf + s->data[i].samples; */
+/*          s->data[i].cumfreq = cf; */
+/*          cf += sample; */
+/*          s->data[i].samples = next; */
+/*          cf_next += next; */
+/*       } */
+/*       assert(cf == (1 << s->pow2)); */
+/*       s->countdown = (2 << s->pow2) - cf - cf_next; */
+/*    } else { */
+/*       int pcf, cf, cf_next, i; */
+/*       cf = cf_next = 0; */
+/*       pcf = 0; */
+/*       for (i=0; i < s->num_sym; ++i) { */
+/*          int sample = (s->data[i].cumfreq - pcf + s->data[i].samples) >> 1; */
+/*          s->data[i].cumfreq = cf; */
+/*          cf += sample; */
+/*          s->data[i].samples = 1; */
+/*          cf_next += 1; */
+/*       } */
+/*       assert(cf == (1 << s->pow2)); // this isn't necessarily true, due to rounding down! */
+/*       s->countdown = (2 << s->pow2) - cf - cf_next; */
+/*    } */
+/* } */
 
 void stb_arith_encode_byte(stb_arith *a, int byte)
 {

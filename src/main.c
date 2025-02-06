@@ -150,7 +150,9 @@ typedef struct
 sprite sprites[MAX_SPRITES];
 int num_sprites;
 
+#ifdef _WIN32
 #pragma warning(disable:4244)
+#endif
 
 #ifdef _MSC_VER
 #pragma warning(disable:4305)
@@ -658,9 +660,9 @@ int alpha_test_sprites=1;
 void render_sprites(void)
 {
    int i;
-   vec s_off, t_off, shadow_s_off = { 0.5,0,0}, shadow_t_off = { 0,0.5,0 };
+   vec s_off, t_off, shadow_s_off = vec( 0.5,0,0 ), shadow_t_off = vec( 0,0.5,0 );
    stbglUseProgram(dumb_prog);
-   
+
    glDisable(GL_ALPHA_TEST);
    glDepthMask(GL_FALSE);
    glEnable(GL_BLEND);
@@ -799,9 +801,9 @@ skeleton_shape player_skeleton =
 {
    { 1.2f, 0.4f }, // gait times
 
-   { .10f,.11f,.13f, },
-   { .05f,.05f,.03f, },
-   { .20f,.13f,.33f, },
+   vec( .10f,.11f,.13f ),
+   vec( .05f,.05f,.03f ),
+   vec( .20f,.13f,.33f ),
    0.02f, 0.02f,
    0.12f, 0.08f,
    0.27f,0.27f-0.015f,
@@ -853,7 +855,7 @@ static void box_vertex(vec *pt, vec *a, vec *x, vec *y, vec *axis, float sx, flo
 static void draw_cylinder_from_to(vec *a, vec *b, float radius)
 {
    vec vertex[8];
-   vec axis, x={1,0,0}, local_x, local_y, local_z;
+   vec axis, x=vec(1,0,0), local_x, local_y, local_z;
    vec_sub(&axis, b, a);
    vec_cross(&local_y, &axis, &x);
    vec_normeq(&local_y);
@@ -932,7 +934,7 @@ void update_biped(vec pos, type_properties *tp, vec ang, float bottom_z, objid o
    int i;
    float vel[3];
    float mag;
-   float s,c;
+   float s, obbg__unused__ c;
    float y_left,y_right, z_left,z_right;
    vec move_vel = obj[o].velocity;
    biped_animation_state *ba = &biped[o];
@@ -1155,7 +1157,7 @@ void render_biped(vec pos, type_properties *tp, vec ang, float bottom_z, objid o
    glMatrixMode(GL_MODELVIEW);
 
    {
-      vec move_vel = obj[o].velocity;
+      obbg__unused__ vec move_vel = obj[o].velocity;
       biped_animation_state *ba = &biped[o];
 
       vec head,torso,neck;
@@ -1164,7 +1166,7 @@ void render_biped(vec pos, type_properties *tp, vec ang, float bottom_z, objid o
       vec left_knee;
       vec right_leg_top;
       vec right_knee;
-      vec right_foot_orig;
+      obbg__unused__ vec right_foot_orig;
       float torso_bottom, torso_top, head_bottom, head_top, neck_bottom, neck_top;
       float head_offset = sk->head_offset_forward * tp->height;
 
@@ -1450,8 +1452,9 @@ void draw_main(void)
 }
 
 
-
+#ifdef _WIN32
 #pragma warning(disable:4244; disable:4305; disable:4018)
+#endif
 
 #define SCALE   2
 
@@ -1499,7 +1502,7 @@ void draw(void)
 
 
 static int initialized=0;
-static float last_dt;
+obbg__unused__ static float last_dt;
 
 int screen_x,screen_y;
 

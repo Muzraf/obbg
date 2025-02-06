@@ -179,7 +179,7 @@ extern int stbgl_TexImage2D_Extra(int texid, int w, int h, void *data, int chan,
 
 int stbgl_hasExtension(char *ext)
 {
-   const char *s = glGetString(GL_EXTENSIONS);
+   const char *s = (char *)glGetString(GL_EXTENSIONS);
    for(;;) {
       char *e = ext;
       for (;;) {
@@ -570,7 +570,7 @@ __declspec(dllimport) stbgl__voidfunc wglGetProcAddress(char *);
 #define STB__HAS_WGLPROC
 static void (__stdcall *stbgl__CompressedTexImage2DARB)(int target, int level,
                                    int internalformat, int width,
-                                   int height, int border, 
+                                   int height, int border,
                                    int imageSize, void *data);
 static void stbgl__initCompTex(void)
 {
@@ -579,10 +579,12 @@ static void stbgl__initCompTex(void)
 #else
 static void (*stbgl__CompressedTexImage2DARB)(int target, int level,
                                    int internalformat, int width,
-                                   int height, int border, 
+                                   int height, int border,
                                    int imageSize, void *data);
 static void stbgl__initCompTex(void)
 {
+	(void)stbgl__CompressedTexImage2DARB;
+
 }
 #endif // _WIN32
 
@@ -673,10 +675,13 @@ int stbgl_TexImage2D_Extra(int texid, int w, int h, void *data, int chan, char *
 {
    static int has_s3tc = -1; // haven't checked yet
    int free_data = 0, is_compressed = 0;
+	(void)is_compressed;
    int pad_to_power_of_two = 0, non_power_of_two = 0;
    int premultiply_alpha = 0; // @TODO
+	(void)premultiply_alpha;
    int float_tex   = 0; // @TODO
-   int input_type  = GL_UNSIGNED_BYTE;
+	(void)float_tex;
+	int input_type  = GL_UNSIGNED_BYTE;
    int input_desc  = STBGL_UNDEFINED;
    int output_desc = STBGL_UNDEFINED;
    int mipmaps     = STBGL_UNDEFINED;

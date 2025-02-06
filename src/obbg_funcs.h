@@ -7,7 +7,7 @@
 extern void error(char *s);
 extern void ods(char *fmt, ...);
 extern void examine_outstanding_genchunks(void);
-extern void init_voxel_render(int voxtex[2]);
+extern void init_voxel_render(uint voxtex[2]);
 extern void free_voxel_render();
 extern void render_voxel_world(float campos[3]);
 extern void init_chunk_caches(void);

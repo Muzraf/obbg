@@ -131,7 +131,7 @@ extern void vec_print(vec *v);
 
 #ifdef STB_DEFINE
 void vec_print(vec *v) {
-	printf("%f %f %f\n", v->x, v-y, v->z);
+	printf("%f %f %f\n", v->x, v->y, v->z);
 }
 
 /* vec vec_zero(void) */
@@ -148,7 +148,7 @@ void vec_print(vec *v) {
 
 vec vec3f(float *p)
 {
-   vec v = { p[0], p[1], p[2] };
+   vec v = vec( p[0], p[1], p[2] );
    return v;
 }
 
